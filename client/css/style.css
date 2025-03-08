@@ -1,0 +1,616 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #333;
+    text-align: center;
+  }
+  
+  header {
+    background: linear-gradient(135deg, #4D1C78, #7d4ba8);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+  .logo {
+    width: 10em;
+    height: 7em;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .signup-btn,
+  .login-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  
+  .signup-btn {
+    background-color: #f9f9f9;
+    color: black;
+  }
+  
+  .login-btn {
+    background-color: black;
+    color: #f9f9f9;
+  }
+  .logout-btn {
+    background-color: #f9f9f9;
+    color: black;
+  }
+  
+  .hero {
+    color: #4D1C78;
+    padding: 10px 20px;
+    margin-top: 60px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 3em;
+  }
+  
+  .hero p {
+    font-size: 1.5em;
+  }
+  
+  .digiwall {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .login-container,
+  .signUp {
+    background: #4D1C78;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.589);
+    margin: 20px auto;
+    max-width: 500px;
+  }
+  
+  .login-container h1,
+  .signUp h1 {
+    margin-bottom: 20px;
+  }
+  
+  .login-container form,
+  .signUp form {
+    width: 100%;
+  }
+  
+  .login-container input,
+  .signUp input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-container .btn-submit,
+  .signUp input[type="submit"] {
+    background-color: #11cbb2;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .login-container .btn-submit:hover,
+  .signUp input[type="submit"]:hover {
+    background-color: #0fa898;
+  }
+  
+  .login-container a,
+  .signUp a {
+    color: #11cbb2;
+    text-decoration: none;
+  }
+  
+  .login-container a:hover,
+  .signUp a:hover {
+    text-decoration: underline;
+  }
+  
+  .box {
+    padding: 10px 0;
+  }
+  
+  .wallets {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wallets h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4D1C78; 
+    text-align: left;
+  }
+  
+  .wallet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .wallet-item {
+    background-color: #f8f9fa; 
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .wallet-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wallet-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .wallet-item button {
+    background-color: #11cbb2; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+  
+  .wallet-item button:hover {
+    background-color: #0fa898; 
+  }
+  
+  .add-wallet-btn {
+    background-color: #4D1C78; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+  }
+  
+  .add-wallet-btn:hover {
+    background-color: #3a145d;
+  }
+  
+  .add-wallet-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #4D1C78; 
+    text-align: center;
+  }
+  
+  .add-wallet-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-wallet-form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4D1C78; 
+  }
+  
+  .add-wallet-form input,
+  .add-wallet-form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .add-wallet-form input:focus,
+  .add-wallet-form select:focus {
+    border-color: #11cbb2; 
+    outline: none;
+  }
+  
+  .add-wallet-form button {
+    background-color: #11cbb2; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+  }
+  
+  .add-wallet-form button:hover {
+    background-color: #0fa898;
+  }
+  
+  .close-modal-btn {
+    background-color: #4D1C78; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.2s;
+  }
+  
+  .close-modal-btn:hover {
+    background-color: #3a145d; 
+  }
+  .wallet-info {
+    background-color: #f8f9fa; 
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: none;
+  }
+  
+  .wallet-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wallet-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .wallet-info p strong {
+    color: #4D1C78; 
+  }
+  
+  .add-card-btn {
+    background-color: #11cbb2; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+  }
+  
+  .add-card-btn:hover {
+    background-color: #0fa898; 
+  }
+  
+  .card-info {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .card-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+    display: none;
+  }
+  
+  .card-info button {
+    display: none;
+    background-color: #4D1C78; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: background-color 0.2s;
+  }
+  
+  .card-info button:hover {
+    background-color: #3a145d; 
+  }
+  
+  .add-card-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .add-card-modal .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .add-card-modal h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #4D1C78; 
+    text-align: center;
+  }
+  
+  .add-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-card-form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4D1C78;
+  }
+  
+  .add-card-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .add-card-form input:focus {
+    border-color: #11cbb2; 
+    outline: none;
+  }
+  
+  .add-card-form button[type="submit"] {
+    background-color: #11cbb2; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+  }
+  
+  .add-card-form button[type="submit"]:hover {
+    background-color: #0fa898; 
+  }
+  
+  .add-card-form button[type="button"] {
+    background-color: #4D1C78; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+  
+  .add-card-form button[type="button"]:hover {
+    background-color: #3a145d; 
+  }
+  
+  
+  @media (max-width: 764px) {
+    header h1 {
+        font-size: 20px;
+    }
+  
+  .help-center {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+  }
+  
+  .help-search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .faq {
+    margin-top: 10px;
+  }
+  
+  .faq-item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .faq-item:hover {
+    background: #e0e0e0;
+  }
+  
+  .contact-support {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .contact-support:hover {
+    background: #0056b3;
+  }
+  
+  .forgot-pass {
+    width: 50%;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .forgot-pass input[type="email"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .forgot-pass button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .forgot-pass button:hover {
+    background: #218838;
+  }
+  
+  .notifications {
+    width: 60%;
+    margin: 20px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification-item {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border-left: 5px solid #007bff;
+  }
+  
+  .notification-item.success {
+    border-left-color: #28a745;
+  }
+  
+  .notification-item.error {
+    border-left-color: #dc3545;
+  }
+  
+  .notification-item.warning {
+    border-left-color: #ffc107;
+  }
+  
+  .notification-item p {
+    margin: 0;
+    color: #333;
+  }
+  
+    .login-btn,
+    .signup-btn {
+        font-size: 15px;
+    }
+  
+    .flex {
+        flex-direction: column;
+    }
+  
+    .info {
+        display: none;
+    }
+  
+    .signUp,
+    .login-container {
+        width: 100%;
+        margin: 10px;
+    }
+  }
