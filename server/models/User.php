@@ -5,8 +5,8 @@
 
         private $conn;
 
-        public function __construct($conn, $full_name=null, $email=null,$password_hash=null) {
-            parent::__construct($full_name, $email, $password_hash);
+        public function __construct($conn,$id=null, $full_name=null, $email=null,$password_hash=null) {
+            parent::__construct($id, $full_name, $email, $password_hash);
             $this->conn = $conn; 
         }
 
@@ -18,38 +18,39 @@
             $stmt->bind_param('sss', $this->getName(), $this->getEmail(), $this->getPassword());
             return $stmt->execute();
         }
-    
+
         public static function findByEmail($conn, $email)
         {
             $query = "SELECT * FROM users WHERE email = ?";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param('s',  getEmail());
+            $stmt->bind_param('s', $email);
             $stmt->execute();
-    
-            $userData = $stmt->get_result()->fetch_assoc();
-    
+            $result = $stmt->get_result();
+            $userData = $result->fetch_assoc();
+
             if ($userData) {
-                return new self($conn, $userData['full_name'], $userData['email'], $userData['password_hash']);
+                return new self($conn, $userData['id'], $userData['full_name'], $userData['email'], $userData['password_hash']);
             }
-    
-            return null; 
+
+            return null;
         }
+
     
         public function update()
         {
-            $query = "UPDATE users SET full_name = ?, password_hash = ? WHERE email = ?";
+            $query = "UPDATE users SET full_name = ?, email = ?, password_hash = ? WHERE id = ?";
             $stmt = $this->conn->prepare($query);
     
-            $stmt->bind_param('sss', $this->getName(),$this->getPassword(), $this->getEmail());
+            $stmt->bind_param('ssi', $this->getName(),$this->getEmail(),$this->getPassword(), $this->id);
     
             return $stmt->execute();
         }
     
         public function delete()
         {
-            $query = "DELETE FROM users WHERE email = ?";
+            $query = "DELETE FROM users WHERE id = ?";
             $stmt = $this->conn->prepare($query);
-            $stmt->bind_param('s', $this->getEmail());
+            $stmt->bind_param('i', $this->getid());
     
             return $stmt->execute();
         }
