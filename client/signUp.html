@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+        <div class="signUp">
+            <h1>SignUp</h1>
+            <form action="/submit_login" method="POST">
+                <div class="box">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" id="full_name" name="full_name" ><br>
+                </div>
+                <div class="box">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" ><br>
+                </div>
+                
+                <div class="box"> 
+                    <label for="pass_hash">Password:</label>
+                    <input type="password" id="pass_hash" name="pass_hash" ><br>
+                </div>
+
+                <div class="box"> 
+                    <a href="forgetPass.html">Forget Password</a>
+                </div>
+
+                <div class="box"> 
+                    <input type="submit" value="Login"><br>
+                </div>
+            </form>
+            
+            <a href="login.html">
+                <button class="login-btn">
+                    <p>Already Have an Account? Login</p>
+                </button>
+            </a>
+        </div>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.8.1/dist/axios.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
