@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <h1>Frequently Asked Questions</h1>
     
-    <div id="questions-list"></div>
+    <div class="search-container">
+        <h1>Search</h1>
+        <form id="searchForm">
+            <div class="form-group">
+                <label for="keyword">Keyword:</label>
+                <input type="text" id="keyword" name="keyword" placeholder="Enter a keyword">
+            </div>
+            <button type="submit">Search</button>
+        </form>
 
-
+        <div id="results"></div> 
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.8.1/dist/axios.min.js"></script>
     <script src="js/script.js"> </script>
     <script type="text/javascript">
