@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__ . '/../connection/connect.php';
+    require_once __DIR__ . '/UserSkeleton.php';
 
     class User extends UserSkeleton{
 

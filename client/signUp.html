@@ -10,7 +10,7 @@
 <body>
         <div class="signUp">
             <h1>SignUp</h1>
-            <form action="/submit_login" method="POST">
+            <form id="signupForm">
                 <div class="box">
                     <label for="full_name">Full Name:</label>
                     <input type="text" id="full_name" name="full_name" ><br>
@@ -21,8 +21,8 @@
                 </div>
                 
                 <div class="box"> 
-                    <label for="pass_hash">Password:</label>
-                    <input type="password" id="pass_hash" name="pass_hash" ><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" ><br>
                 </div>
 
                 <div class="box"> 
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="box"> 
-                    <input type="submit" value="Login"><br>
+                    <input type="submit" value="Sign Up"><br>
                 </div>
             </form>
             
@@ -45,5 +45,8 @@
     
     <script src="https://cdn.jsdelivr.net/npm/axios@1.8.1/dist/axios.min.js"></script>
     <script src="js/script.js"></script>
+    <script type="text/javascript">
+        articlePages.loadFor("signUp");
+    </script>
 </body>
 </html>
