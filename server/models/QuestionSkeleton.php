@@ -3,21 +3,15 @@
 
 class QuestionSkeleton
 {
-    private $id;
 
     private $question;
 
     private $answer;
 
-    public function __construct($id=null, $question, $answer) {
+    public function __construct( $question, $answer) {
         $this->id = $id;
         $this->question = $question;
         $this->answer=$answer;
-    }
-
-    public function getId() 
-    { 
-        return $this->id; 
     }
 
     public function getQuestion()

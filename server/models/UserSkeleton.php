@@ -2,26 +2,19 @@
 
     class UserSkeleton
     {
-        private $id;
 
         private $full_name;
 
         private $email;
 
-        private $password_hash;
+        private $pass_hash;
 
-        public function __construct($id=null, $full_name, $email, $password_hash) {
-            $this->id = $id;
+        public function __construct($full_name, $email, $pass_hash) {
             $this->full_name = $full_name;
             $this->email=$email;
-            $this->password_hash=$password_hash;
+            $this->pass_hash=$pass_hash;
         }
     
-        public function getId() 
-        { 
-            return $this->id; 
-        }
-
         public function getName()
         {
             return $this->full_name;
@@ -32,7 +25,7 @@
         }
         public function getPassword()
         {
-            return $this->password_hash;
+            return $this->pass_hash;
         }
         public function setName($full_name)
         {
@@ -44,9 +37,9 @@
             $this->email = $email;
         }
     
-        public function setPassword($password_hash)
+        public function setPassword($pass_hash)
         {
-            $this->password_hash = $password_hash;
+            $this->pass_hash = $pass_hash;
         }
 
     }

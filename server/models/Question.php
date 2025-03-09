@@ -6,8 +6,8 @@
 
         private $conn;
 
-        public function __construct($conn, $id = null, $question=null, $answer=null) {
-            parent::__construct($id, $question, $answer);
+        public function __construct($conn, $question, $answer) {
+            parent::__construct($question, $answer);
             $this->conn = $conn; 
         }
 
@@ -16,8 +16,9 @@
         {
             $query = "INSERT INTO questions (question, answer) VALUES (?, ?)";
             $stmt = $this->conn->prepare($query);
-    
-            $stmt->bind_param('ss', $this->getQuestion(), $this->getAnswer());
+            $question=$this->getQuestion();
+            $answer=$this->getAnswer();
+            $stmt->bind_param('ss', $question ,$answer);
             return $stmt->execute();
         }
     
@@ -31,27 +32,28 @@
             $questionData = $stmt->get_result()->fetch_assoc();
     
             if ($questionData) {
-                return new self($conn, $questionData['id'], $questionData['question'], $questionData['answer']);
+                return new self($conn, $questionData['question'], $questionData['answer']);
             }
     
             return null; 
         }
     
-        public function update()
+        public function update($id)
         {
             $query = "UPDATE questions SET question = ?  , answer = ? WHERE id = ?";
             $stmt = $this->conn->prepare($query);
-    
-            $stmt->bind_param('ssi', $this->getQuestion(),$this->getAnswer(),$this->id);
+            $question=$this->getQuestion();
+            $answer=$this->getAnswer();
+            $stmt->bind_param('ssi', $question,$answer,$id);
     
             return $stmt->execute();
         }
     
-        public function delete()
+        public function delete($id)
         {
             $query = "DELETE FROM questions WHERE id = ?";
             $stmt = $this->conn->prepare($query);
-            $stmt->bind_param('i', $this->getid());
+            $stmt->bind_param('i', $id);
     
             return $stmt->execute();
         }
@@ -68,7 +70,7 @@
             $questions = [];
     
             while ($row = $result->fetch_assoc()) {
-                $questions[] = new self($conn, $row['id'], $row['question'], $row['answer']);
+                $questions[] = new self($conn, $row['question'], $row['answer']);
             }
     
             return $questions;
