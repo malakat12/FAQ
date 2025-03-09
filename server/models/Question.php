@@ -58,23 +58,30 @@
             return $stmt->execute();
         }
 
-        public static function searchByKeyword($conn, $keyword)
+        public static function getQuestions($conn, $keyword='')
         {
-            $keyword = "%$keyword%";
-            $query = "SELECT * FROM questions WHERE question LIKE ? OR answer LIKE ?";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param('ss', $keyword, $keyword);
-            $stmt->execute();
-    
-            $result = $stmt->get_result();
-            $questions = [];
-    
-            while ($row = $result->fetch_assoc()) {
-                $questions[] = new self($conn, $row['question'], $row['answer']);
+            if($keyword){
+                $keyword = '%' . $keyword . '%';
+                $query = "SELECT * FROM questions WHERE question LIKE ? OR answer LIKE ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param('ss', $keyword, $keyword);
+            } else{
+                $sql = "SELECT * FROM questions";
+                $stmt = $conn->prepare($sql);
             }
-    
-            return $questions;
-        }
 
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $questions = [];
+        
+                while ($row = $result->fetch_assoc()) {
+                    $questions[] = $row;
+                }
+                echo json_encode($questions);
+            }else {
+                echo json_encode(["message" => "No questions found"]);
+            }
+        }
     }
 ?>
