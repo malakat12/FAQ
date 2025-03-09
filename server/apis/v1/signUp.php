@@ -13,7 +13,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = json_decode(file_get_contents("php://input"), true);
-        echo "here";
+
         if (!isset($data['full_name'], $data['email'], $data['password'])) {
             echo json_encode(['error' => 'Missing required fields']);
             exit;

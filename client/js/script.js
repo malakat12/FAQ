@@ -96,3 +96,57 @@ articlePages.load_login = function() {
         }
     });
 };
+
+articlePages.load_home= function(){
+    document.addEventListener('DOMContentLoaded', async function () {
+        const resultsDiv = document.getElementById('results'); // Get the results container
+    
+        try {
+            const response = await fetch('http://localhost/FAQ/server/apis/v1/getQuestions.php');
+            const data = await response.json(); 
+            
+            displayQuestions(data, resultsDiv);
+        } catch (error) {
+            console.error('Error fetching questions:', error);
+            resultsDiv.innerHTML = '<p>An error occurred while fetching questions.</p>';
+        }
+    
+        document.getElementById('searchForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const keyword = document.getElementById('keyword').value.toLowerCase(); // Get the keyword from the input
+    
+            try {
+                const response = await fetch('http://localhost/FAQ/server/apis/v1/getQuestions.php');
+                const data = await response.json();
+                
+                const filteredQuestions = data.filter(question => 
+                    question.question.toLowerCase().includes(keyword) || 
+                    question.answer.toLowerCase().includes(keyword)
+                );
+    
+                displayQuestions(filteredQuestions, resultsDiv);
+            } catch (error) {
+                console.error('Error fetching questions:', error);
+                resultsDiv.innerHTML = '<p>An error occurred while fetching questions.</p>';
+            }
+        });
+    });
+}
+function displayQuestions(questions, container) {
+    container.innerHTML = '';
+
+    if (Array.isArray(questions) && questions.length > 0) {
+        questions.forEach(question => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.innerHTML = `
+                <h3>${question.question}</h3>
+                <p>${question.answer}</p>
+            `;
+            container.appendChild(questionDiv);
+        });
+    } else {
+        container.innerHTML = '<p>No questions found.</p>';
+    }
+}
