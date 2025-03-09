@@ -12,9 +12,24 @@
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = json_decode(file_get_contents("php://input"), true);
+        if (!isset($data['question'], $data['answer'])) {
+            echo json_encode(['error' => 'Missing required fields']);
+            exit;
+        }
 
-    $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+        $question = trim($data['question']);
+        $answer = trim($data['answer']);
 
-    Question::getQuestions($conn, $keyword);
+        try {
+            $question = new Question($conn, $question, $answer);
+
+            if ($question->save()) {
+                echo json_encode(['success' => 'Question posted successfully']);
+            } else {
+                echo json_encode(['error' => 'Failed to post question']);
+            }
+        } catch (Exception $e) {
+            echo json_encode(['error' => 'An error occurred: ' . $e->getMessage()]);
+        }
     }
 ?>

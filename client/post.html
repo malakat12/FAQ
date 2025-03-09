@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Post a Question</title>
+    <link rel="stylesheet" href="css/styles.css"> 
 </head>
 <body>
-    
-</body>
+    <div class="post-container">
+        <h1>Post a Question</h1>
+        <form id="postQuestionForm">
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <textarea id="question" name="question" placeholder="Enter your question" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="answer">Answer:</label>
+                <textarea id="answer" name="answer" placeholder="Enter the answer" required></textarea>
+            </div>
+            <button type="submit">Post a Question</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.8.1/dist/axios.min.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript">
+        articlePages.loadFor("post");
+    </script></body>
 </html>

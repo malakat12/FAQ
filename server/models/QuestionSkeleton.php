@@ -9,7 +9,6 @@ class QuestionSkeleton
     private $answer;
 
     public function __construct( $question, $answer) {
-        $this->id = $id;
         $this->question = $question;
         $this->answer=$answer;
     }

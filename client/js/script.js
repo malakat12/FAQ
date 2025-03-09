@@ -91,7 +91,7 @@ articlePages.load_login = function() {
             console.log(response);
             window.location.href = "home.html";
         } catch (error) {
-            alert("login failed. Please try again.");
+            alert("login failed. Try again.");
             console.error(error);
         }
     });
@@ -99,7 +99,7 @@ articlePages.load_login = function() {
 
 articlePages.load_home= function(){
     document.addEventListener('DOMContentLoaded', async function () {
-        const resultsDiv = document.getElementById('results'); // Get the results container
+        const resultsDiv = document.getElementById('results'); 
     
         try {
             const response = await fetch('http://localhost/FAQ/server/apis/v1/getQuestions.php');
@@ -114,7 +114,7 @@ articlePages.load_home= function(){
         document.getElementById('searchForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 
-            const keyword = document.getElementById('keyword').value.toLowerCase(); // Get the keyword from the input
+            const keyword = document.getElementById('keyword').value.toLowerCase(); 
     
             try {
                 const response = await fetch('http://localhost/FAQ/server/apis/v1/getQuestions.php');
@@ -133,6 +133,7 @@ articlePages.load_home= function(){
         });
     });
 }
+
 function displayQuestions(questions, container) {
     container.innerHTML = '';
 
@@ -149,4 +150,42 @@ function displayQuestions(questions, container) {
     } else {
         container.innerHTML = '<p>No questions found.</p>';
     }
+}
+
+articlePages.load_post= function(){
+    document.getElementById('postQuestionForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+    
+        const question = document.getElementById('question').value;
+        const answer = document.getElementById('answer').value;
+        const messageDiv = document.getElementById('message');
+    
+        if (!question || !answer) {
+            messageDiv.innerHTML = '<p>Please fill in both fields.</p>';
+            return;
+        }
+    
+        try {
+            const response = await fetch('http://localhost/FAQ/server/apis/v1/postQuestion.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question, answer }),
+            });
+    
+            const data = await response.json();
+    
+            if (data.success) {
+                messageDiv.innerHTML = `<p style="color: green;">${data.success}</p>`;
+                window.location.href = "home.html";
+
+            } else if (data.error) {
+                messageDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+            }
+        } catch (error) {
+            console.error('Error posting question:', error);
+            messageDiv.innerHTML = '<p style="color: red;">An error occurred while posting the question.</p>';
+        }
+    });
 }
