@@ -246,6 +246,66 @@ button:hover {
   line-height: 1.5;
 }
 
+.post-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  background-color: #f9f9f9;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #fff;
+}
+
+
+
+button:focus {
+  outline: none;
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+#message p {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#message .success {
+  background-color: #e7f9ed;
+  color: #2d6a4f;
+  border: 1px solid #2d6a4f;
+}
+
+#message .error {
+  background-color: #fddede;
+  color: #e63946;
+  border: 1px solid #e63946;
+}
+
 @media (max-width: 600px) {
   .search-container {
       padding: 15px;
