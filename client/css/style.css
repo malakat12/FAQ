@@ -173,7 +173,6 @@ h1 {
 
 .search-container {
   width: 90%;
-  max-width: 800px;
   margin: 20px auto;
   background-color: #fff;
   padding: 20px;
@@ -217,7 +216,10 @@ button:hover {
 #results {
   margin-top: 20px;
 }
-
+#results div{
+  display: flex;
+  justify-content: space-between;
+}
 .question {
   background-color: #fff;
   margin-bottom: 15px;
